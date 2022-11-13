@@ -1,3 +1,5 @@
+import "./styles.css";
+
 import {Component} from 'react'
 import "./styles.css";
 
@@ -82,18 +84,12 @@ filterCancel=()=>{
         <button value="Angular" onClick={this.handleBtns}>Angular</button>
         <button onClick={this.getModal}>Filter</button>
         {isfilter && (
-          <div>
+          <div className="modal-con">
             <button onClick={this.getClosedModal}>X</button><br/><br/>
             <input type="search" 
             value={searchInput} onChange={this.changeInput}/>
             <button onClick={this.filterApply} value="Apply Filters">Apply</button>
             <button onClick={this.filterCancel}>Cancel</button>
-            <ul>
-          {searchResults.map(eachProduct=>(
-            <ProductItem key={eachProduct.id} 
-            productDetails={eachProduct}/>
-          ))}
-        </ul>
           </div>
         )}
         {showFilter&&
@@ -104,10 +100,15 @@ filterCancel=()=>{
           ))}
         </ul>
         }
+        <ul>
+          {searchResults.map(eachProduct=>(
+            <ProductItem key={eachProduct.id} 
+            productDetails={eachProduct}/>
+          ))}
+        </ul>
         </div>
     )
   }
 }
 
 export default App
-
